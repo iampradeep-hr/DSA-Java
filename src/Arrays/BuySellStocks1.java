@@ -2,22 +2,24 @@ package Arrays;
 
 public class BuySellStocks1 {
 
-    public static int maxProfit(int[] prices){
+    //Bruteforce- use auxiliary array (find max selling price), sub with main array and return max value
+
+    public static int maxProfit(int[] a){
         int min_so_far=Integer.MAX_VALUE;
-        int profit=0;
+        int maxProfit=0;
         //loop
-        for (int i=0;i<prices.length;i++){
+        for (int i=0;i<a.length;i++){
             //find the min value to buy
-            if (prices[i]<min_so_far){
-                min_so_far=prices[i];
-            }
+           min_so_far=Math.min(min_so_far,a[i]);
+
             //calculate profit
-            int temp=prices[i]-min_so_far;
-            if (temp>profit){
-                profit=temp;
-            }
+            int temp=a[i]-min_so_far;
+
+            //store the max profit
+            maxProfit=Math.max(maxProfit,temp);
+
         }
-        return profit;
+        return maxProfit;
 
     }
 
